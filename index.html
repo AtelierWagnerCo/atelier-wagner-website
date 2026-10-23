@@ -14,7 +14,6 @@
   <meta property="og:image" content="https://atelierwagnerco.com/assets/atelier-wagner-approved-hero.png">
   <meta name="twitter:card" content="summary_large_image">
   <title>Atelier Wagner & Co. — Coming Soon</title>
-  <link rel="preload" as="image" href="assets/atelier-wagner-approved-hero.png">
   <style>
     :root { color-scheme: dark; background: #031923; }
     *, *::before, *::after { box-sizing: border-box; }
@@ -27,42 +26,38 @@
     }
     main {
       width: 100%;
-      min-height: 100vh;
-      min-height: 100svh;
-      display: grid;
-      place-items: center;
+      position: relative;
+      height: 100vh;
+      height: 100svh;
+      height: 100dvh;
       overflow: hidden;
       background: #031923;
     }
-    /* A byte-identical copy of the expressly approved final rendering.
-       No new overlays, replacement typography, or synthetic effects. */
+    /* Each composition fills the viewport without stretching. The portrait
+       source carries its own lettering, so a narrow crop cannot cut the name. */
+    .artwork {
+      position: absolute;
+      inset: 0;
+      display: block;
+    }
     .approved-artwork {
       display: block;
       width: 100%;
-      height: 100vh;
-      height: 100svh;
-      max-width: 100%;
-      object-fit: contain;
-      object-position: center;
+      height: 100%;
+      object-fit: cover;
+      /* Preserve the arch crown when an ultrawide viewport crops the floor. */
+      object-position: 50% 12%;
       animation: reveal 850ms ease-out both;
     }
     @keyframes reveal { from { opacity: 0; } to { opacity: 1; } }
     @media (prefers-reduced-motion: reduce) {
       .approved-artwork { animation: none; }
     }
-    /* Portrait framing enlarges the entrance while retaining all actual text.
-       Only the outer curtain edges are cropped; the source file stays unchanged. */
-    @media (max-aspect-ratio: 3 / 4) {
-      main { position: relative; }
+    /* Portrait and square tablets use a genuinely recomposed image. Its text
+       sits well within device safe areas; padding would recreate blank bands. */
+    @media (max-aspect-ratio: 1 / 1) {
       .approved-artwork {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        width: 164vw;
-        height: auto;
-        max-width: none;
-        max-height: none;
+        object-position: 50% 35%;
       }
     }
     .sr-only {
@@ -83,15 +78,29 @@
   <main>
     <h1 class="sr-only">Atelier Wagner &amp; Co.</h1>
     <p class="sr-only">Coming Soon</p>
-    <img
-      class="approved-artwork"
-      src="assets/atelier-wagner-approved-hero.png"
-      width="1669"
-      height="942"
-      alt=""
-      decoding="async"
-      fetchpriority="high"
-    >
+    <picture class="artwork">
+      <source
+        media="(min-aspect-ratio: 2 / 1)"
+        srcset="assets/atelier-wagner-ultrawide-refined.png"
+        width="2048"
+        height="768"
+      >
+      <source
+        media="(max-aspect-ratio: 1 / 1)"
+        srcset="assets/atelier-wagner-portrait-refined.png"
+        width="852"
+        height="1846"
+      >
+      <img
+        class="approved-artwork"
+        src="assets/atelier-wagner-desktop-refined.png"
+        width="1669"
+        height="942"
+        alt=""
+        decoding="async"
+        fetchpriority="high"
+      >
+    </picture>
   </main>
 </body>
 </html>
