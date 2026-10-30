@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 64" role="img" aria-labelledby="awTitle">
+  <title id="awTitle">Atelier Wagner &amp; Co. monogram</title>
+  <!-- A -->
+  <path fill="currentColor" d="M4 52 L18 12h5.5L37.5 52h-6.5l-2.6-8H13.1l-2.6 8zm11.2-13.5h10.1L20.75 24z"/>
+  <!-- W -->
+  <path fill="currentColor" d="M40 12h5.2l3.6 24.5L53 12h5.1l3.7 24.5L65.4 12H71L65.2 52h-5.8L55.2 28.5 51 52h-5.8L39.1 28.5 35 52h-5.7z"/>
+  <path fill="none" stroke="currentColor" stroke-width="1.4" d="M6 56.5h60"/>
+</svg>
