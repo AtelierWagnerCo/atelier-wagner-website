@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#031923">
+  <meta name="color-scheme" content="dark light">
+  <meta name="description" content="Bat Phone — Atelier Wagner &amp; Co. studio floor: projects, pipeline, and what the agents handled.">
+  <link rel="canonical" href="https://atelierwagnerco.com/bat-phone/">
+  <title>Bat Phone · Atelier Wagner &amp; Co.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=JetBrains+Mono:wght@400;500&family=Jost:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="css/bat-phone.css">
+</head>
+<body>
+  <a class="sr-only" href="#studio-pulse">Skip to studio pulse</a>
+
+  <div class="app" id="app">
+    <header class="topbar">
+      <div class="brand-block">
+        <p class="product-label">Bat Phone</p>
+        <div class="brand-row">
+          <svg class="monogram" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 64" width="40" height="40" aria-hidden="true" focusable="false">
+            <path fill="currentColor" d="M4 52 L18 12h5.5L37.5 52h-6.5l-2.6-8H13.1l-2.6 8zm11.2-13.5h10.1L20.75 24z"/>
+            <path fill="currentColor" d="M40 12h5.2l3.6 24.5L53 12h5.1l3.7 24.5L65.4 12H71L65.2 52h-5.8L55.2 28.5 51 52h-5.8L39.1 28.5 35 52h-5.7z"/>
+            <path fill="none" stroke="currentColor" stroke-width="1.4" d="M6 56.5h60"/>
+          </svg>
+          <h1 class="brand-name">Atelier Wagner &amp; Co.</h1>
+        </div>
+      </div>
+
+      <div
+        class="bat-status is-quiet"
+        id="bat-status"
+        role="status"
+        aria-label="Bat Phone status"
+      >
+        <svg class="bat-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="32" height="32" fill="none" aria-hidden="true" focusable="false">
+          <rect x="16" y="6" width="16" height="28" rx="3.5" stroke="currentColor" stroke-width="1.75"/>
+          <rect x="20.5" y="9.5" width="7" height="2" rx="1" fill="currentColor" opacity="0.55"/>
+          <circle cx="24" cy="29.5" r="1.6" fill="currentColor"/>
+          <path d="M12 18c-2.8 1.2-4.5 3.4-4.5 6.2 0 4.2 3.6 7.3 8.2 7.3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+          <path d="M36 18c2.8 1.2 4.5 3.4 4.5 6.2 0 4.2-3.6 7.3-8.2 7.3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+          <path d="M8.5 38.5c3.2 2.4 7.5 3.8 15.5 3.8s12.3-1.4 15.5-3.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.45"/>
+        </svg>
+        <div class="bat-copy">
+          <span class="label" id="bat-label">Bat Phone</span>
+          <p id="bat-message">✓ Bat Phone is quiet. The agents have the rest.</p>
+        </div>
+      </div>
+
+      <div class="controls" role="toolbar" aria-label="Display controls">
+        <button type="button" class="ctrl-btn" id="present-btn" aria-pressed="false" aria-keyshortcuts="P">
+          Present <span class="kbd">P</span>
+        </button>
+        <button type="button" class="ctrl-btn" id="theme-btn" aria-pressed="false">
+          Light mode
+        </button>
+      </div>
+    </header>
+
+    <!-- SECTION: Studio Pulse (overview) -->
+    <section class="section" id="studio-pulse" aria-labelledby="pulse-title">
+      <header class="section-head">
+        <p class="section-kicker">Overview</p>
+        <h2 class="section-title" id="pulse-title">Studio Pulse</h2>
+        <p class="section-lede helper">The floor at a glance — pressure, pace, and what the agents are absorbing.</p>
+      </header>
+
+      <div class="summary-strip" id="summary-strip" aria-label="Summary metrics"></div>
+
+      <div>
+        <p class="section-kicker" style="margin-bottom:0.75rem">Pipeline</p>
+        <div class="pipeline" id="pipeline" role="group" aria-label="Pipeline stages. Activate a stage to filter projects."></div>
+      </div>
+    </section>
+
+    <!-- SECTION: On the Board (projects) -->
+    <section class="section" id="on-the-board" aria-labelledby="board-title">
+      <header class="section-head">
+        <p class="section-kicker">Projects</p>
+        <h2 class="section-title" id="board-title">On the Board</h2>
+        <p class="section-lede helper">Status edges show trouble at a glance. Open a row for the brief, hours, and agent draft.</p>
+      </header>
+
+      <div class="filters" id="project-filters" role="group" aria-label="Project filters"></div>
+
+      <div class="projects-layout">
+        <ul class="project-list" id="project-list" aria-label="Project list"></ul>
+        <article class="brief" id="project-brief" aria-live="polite" aria-label="Selected project brief"></article>
+      </div>
+    </section>
+
+    <!-- SECTION: Agent Ledger -->
+    <section class="section" id="agent-ledger" aria-labelledby="ledger-title">
+      <header class="section-head">
+        <p class="section-kicker">What the agents handled</p>
+        <h2 class="section-title" id="ledger-title">Agent Ledger</h2>
+        <p class="section-lede helper">Today’s log, eight weeks of revisions, and what you told us in the quick check-ins.</p>
+      </header>
+
+      <div class="agents-grid">
+        <div class="panel">
+          <h3>Agent activity today</h3>
+          <ol class="activity-log" id="agent-log"></ol>
+        </div>
+
+        <div class="panel">
+          <h3>Revisions shipped</h3>
+          <p class="helper">Eight-week volume. Gold bars mark weeks after agents went live.</p>
+          <div class="chart" id="revisions-chart" role="img"></div>
+        </div>
+
+        <div class="panel" style="grid-column: 1 / -1">
+          <h3>What you told us</h3>
+          <div class="checkin-summary" id="checkin-summary"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Quick check-in card -->
+  <aside
+    class="checkin-card"
+    id="checkin-card"
+    role="dialog"
+    aria-modal="false"
+    aria-labelledby="checkin-question"
+    aria-hidden="true"
+  >
+    <h2 id="checkin-question">How easy was that approval?</h2>
+    <div class="checkin-answers" id="checkin-answers" role="group" aria-label="Answers"></div>
+    <div class="checkin-followup" id="checkin-followup" hidden></div>
+    <div class="checkin-dismiss">
+      <button type="button" id="checkin-not-now">Not now</button>
+      <button type="button" id="checkin-mute">Don’t ask again today</button>
+    </div>
+  </aside>
+
+  <script src="js/data.js" defer></script>
+  <script src="js/app.js" defer></script>
+</body>
+</html>
